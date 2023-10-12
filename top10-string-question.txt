@@ -1,0 +1,154 @@
+Reverse a String:
+--> Question 1: Write a function to reverse a string.
+Solution:
+javascript
+Copy code
+function reverseString(str) {
+  return str.split('').reverse().join('');
+}
+
+Check for Anagrams:
+--> Question 2: Write a function to check if two strings are anagrams of each other.
+Solution:
+javascript
+Copy code
+function areAnagrams(str1, str2) {
+  return str1.split('').sort().join('') === str2.split('').sort().join('');
+}
+
+Find the Longest Word:
+--> Question 3: Write a function to find the longest word in a sentence.
+Solution:
+javascript
+Copy code
+function findLongestWord(sentence) {
+  const words = sentence.split(' ');
+  const longestWord = words.reduce((longest, word) => (word.length > longest.length ? word : longest), '');
+  return longestWord;
+}
+
+Palindrome Check:
+--> Question: Write a function to check if a given string is a palindrome.
+Solution:
+javascript
+Copy code
+function isPalindrome(str) {
+  str = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+  return str === str.split('').reverse().join('');
+}
+
+
+Remove Duplicates from an Array:
+--> Question: Write a function to remove duplicates from an array.
+Solution:
+javascript
+Copy code
+function removeDuplicates(arr) {
+  return [...new Set(arr)];
+}
+Implement a Stack:
+
+Question: Implement a stack data structure with push, pop, and peek operations.
+Solution:
+javascript
+Copy code
+class Stack {
+  constructor() {
+    this.items = [];
+  }
+
+  push(item) {
+    this.items.push(item);
+  }
+
+  pop() {
+    return this.items.pop();
+  }
+
+  peek() {
+    return this.items[this.items.length - 1];
+  }
+}
+Two Sum Problem:
+
+Question: Given an array of numbers, find two numbers that add up to a specific target.
+Solution:
+javascript
+Copy code
+function twoSum(nums, target) {
+  const numIndex = new Map();
+  for (let i = 0; i < nums.length; i++) {
+    const complement = target - nums[i];
+    if (numIndex.has(complement)) {
+      return [numIndex.get(complement), i];
+    }
+    numIndex.set(nums[i], i);
+  }
+  return null;
+}
+Reverse a Linked List:
+
+Question: Implement a function to reverse a singly linked list.
+Solution:
+javascript
+Copy code
+class ListNode {
+  constructor(val) {
+    this.val = val;
+    this.next = null;
+  }
+}
+
+function reverseLinkedList(head) {
+  let prev = null;
+  let current = head;
+  while (current !== null) {
+    const next = current.next;
+    current.next = prev;
+    prev = current;
+    current = next;
+  }
+  return prev;
+}
+Merge Intervals:
+
+Question: Given a collection of intervals, merge any overlapping intervals.
+Solution:
+javascript
+Copy code
+function mergeIntervals(intervals) {
+  intervals.sort((a, b) => a[0] - b[0]);
+  const result = [];
+  let currentInterval = intervals[0];
+  for (let i = 1; i < intervals.length; i++) {
+    if (currentInterval[1] >= intervals[i][0]) {
+      currentInterval[1] = Math.max(currentInterval[1], intervals[i][1]);
+    } else {
+      result.push(currentInterval);
+      currentInterval = intervals[i];
+    }
+  }
+  result.push(currentInterval);
+  return result;
+}
+Binary Search:
+
+Question: Implement the binary search algorithm to find an element in a sorted array.
+Solution:
+javascript
+Copy code
+function binarySearch(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (arr[mid] === target) {
+      return mid;
+    } else if (arr[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+  return -1;
+}
