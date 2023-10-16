@@ -46,7 +46,9 @@ Copy code
 function removeDuplicates(arr) {
   return [...new Set(arr)];
 }
-Implement a Stack:
+
+
+--> Implement a Stack:
 
 Question: Implement a stack data structure with push, pop, and peek operations.
 Solution:
